@@ -6,7 +6,7 @@
       class="p-5 text-center bg-image"
       style="
         background-image: url('https://mdbootstrap.com/img/Photos/Others/ecommerce3.jpg');
-        height: 95vh;
+        height: 100vh;
       "
     >
       <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
