@@ -1,8 +1,11 @@
 <template>
 
-  <Navbar />
-    
-  <router-view />
+  
+    <Navbar />
+      
+    <router-view />
+
+ 
     
   <!-- <Footer /> -->
   
