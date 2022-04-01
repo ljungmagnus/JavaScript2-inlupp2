@@ -44,7 +44,7 @@
                 <!-- Icon -->
                 <router-link class="text-reset me-3" to="/cart">
                     <i class="fas fa-shopping-cart"></i>
-                    <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                    <span v-if="cartTotalQuantity" class="badge rounded-pill badge-notification bg-danger">{{ cartTotalQuantity }}</span>
                 </router-link>
                 
                 <!-- Avatar -->
@@ -84,8 +84,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
     name: 'NavigationBar',
+    computed: {
+        ...mapGetters(['cartTotalQuantity'])
+    }
+
 }
 </script>
 

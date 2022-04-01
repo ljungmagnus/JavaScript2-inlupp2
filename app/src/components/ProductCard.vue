@@ -13,7 +13,9 @@
                         <button type="button" class="btn btn-info"><i class="fa-solid fa-circle-info"></i> details</button>
                     </router-link>
                     
-                    <button type="button" class="btn btn-success"><i class="fa-solid fa-cart-plus"></i> add</button>
+                    <button @click="addToCart({ product, quantity: qty })" type="button" class="btn btn-success">
+                        <i class="fa-solid fa-cart-plus"></i> add
+                    </button>
                     
                 </div>
             </div>
@@ -23,9 +25,18 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
     name: 'ProductCard',
-    props: ['product']
+    props: ['product'],
+    data() {
+        return {
+            qty: 1
+        }
+    },
+    methods: {
+        ...mapActions(['addToCart'])
+    }
 }
 </script>
 

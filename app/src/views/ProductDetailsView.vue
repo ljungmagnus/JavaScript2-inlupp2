@@ -102,8 +102,9 @@
                         <div class="mt-5">
                             <div class="row mt-3">
                                 <div class="col-md-12 text-center text-md-start text-md-end">
-                                    <button class="btn btn-success">
-                                    <i class="fas fa-cart-plus mr-2" aria-hidden="true"></i> Add to cart</button>
+                                    <button @click="addToCart({ product, quantity: qty })" class="btn btn-success">
+                                        <i class="fas fa-cart-plus mr-2" aria-hidden="true"></i> Add to cart
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -127,8 +128,13 @@
 import { mapActions, mapGetters } from 'vuex'
 export default {
     props: ['id'],
+    data() {
+        return {
+            qty: 1
+        }
+    },
     methods: {
-        ...mapActions(['fetchProductByIdFromMongoDB'])
+        ...mapActions(['fetchProductByIdFromMongoDB', 'addToCart'])
     },
     computed: {
         ...mapGetters(['product'])
