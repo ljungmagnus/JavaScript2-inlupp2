@@ -24,7 +24,7 @@
                 <p class="fw-bold m-0">${{ cartItemTotalAmount }}</p>
             </td>
             <td>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Remove item">
+                <button @click="removeItemFromCart(item.product)" type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Remove item">
                     <i class="fa-solid fa-trash-can"></i>
                 </button>
             </td>
@@ -50,7 +50,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['changeQuantity']),
+        ...mapActions(['changeQuantity', 'removeItemFromCart']),
         handleChange() {
             // console.log(this.itemQuantity, this.item)
             if(this.itemQuantity > 0) {

@@ -24,7 +24,16 @@ export default {
   },
   mutations: {
       ADD_TO_CART: (state, { product, quantity }) => {
-          state.cart.push({ product, quantity })
+        let itemAlreadyInCart = state.cart.find(cartItem => cartItem.product._id === product._id) 
+        if(itemAlreadyInCart) {
+            itemAlreadyInCart.quantity += quantity
+            return
+        }
+        state.cart.push({ product, quantity })
+
+      },
+      REMOVE_ITEM_FROM_CART: (state, product) => {
+           state.cart = state.cart.filter(cartItem => cartItem.product._id !== product._id) 
       },
       CHANGE_QUANTITY: (state, { item, newQuantity }) => {
           
@@ -34,6 +43,9 @@ export default {
   actions: {
       addToCart: ({commit}, { product, quantity }) => {
           commit('ADD_TO_CART', { product, quantity })
+      },
+      removeItemFromCart: ({commit}, product) => {
+          commit('REMOVE_ITEM_FROM_CART', product)        
       },
       changeQuantity: ({commit}, {item, newQuantity}) => {
           commit('CHANGE_QUANTITY', {item, newQuantity})
